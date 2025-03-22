@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .btn-container {
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .rock { background-color: #ff6666; }
+        .paper { background-color: #66b3ff; }
+        .scissors { background-color: #99ff99; }
+        .reset { background-color: #333; color: white; }
+        .result {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .score {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rock Paper Scissors</h1>
+    <div class="btn-container">
+        <button class="rock" onclick="playGame('rock')">Rock</button>
+        <button class="paper" onclick="playGame('paper')">Paper</button>
+        <button class="scissors" onclick="playGame('scissors')">Scissors</button>
+        <button class="reset" onclick="resetScore()">Reset Score</button>
+    </div>
+
+    <p class="result" id="result"></p>
+    <p class="score">Wins: <span id="wins">0</span> | Losses: <span id="losses">0</span> | Ties: <span id="ties">0</span></p>
+
+    <script>
+        // Retrieve stored scores or initialize with 0
+        let wins = localStorage.getItem('wins') ? parseInt(localStorage.getItem('wins')) : 0;
+        let losses = localStorage.getItem('losses') ? parseInt(localStorage.getItem('losses')) : 0;
+        let ties = localStorage.getItem('ties') ? parseInt(localStorage.getItem('ties')) : 0;
+
+        // Update score display on page load
+        document.getElementById('wins').innerText = wins;
+        document.getElementById('losses').innerText = losses;
+        document.getElementById('ties').innerText = ties;
+
+        function getComputerMove() {
+            const moves = ['rock', 'paper', 'scissors'];
+            return moves[Math.floor(Math.random() * moves.length)];
+        }
+
+        function playGame(playerMove) {
+            const computerMove = getComputerMove();
+            let result = '';
+
+            if (playerMove === computerMove) {
+                result = 'It\'s a Tie!';
+                ties++;
+            } else if (
+                (playerMove === 'rock' && computerMove === 'scissors') ||
+                (playerMove === 'paper' && computerMove === 'rock') ||
+                (playerMove === 'scissors' && computerMove === 'paper')
+            ) {
+                result = 'You Won!';
+                wins++;
+            } else {
+                result = 'You Lost!';
+                losses++;
+            }
+
+            // Store updated scores in LocalStorage
+            localStorage.setItem('wins', wins);
+            localStorage.setItem('losses', losses);
+            localStorage.setItem('ties', ties);
+
+            // Update UI
+            document.getElementById('result').innerText = `You picked ${playerMove}. Computer picked ${computerMove}. ${result}`;
+            document.getElementById('wins').innerText = wins;
+            document.getElementById('losses').innerText = losses;
+            document.getElementById('ties').innerText = ties;
+        }
+
+        function resetScore() {
+            wins = 0;
+            losses = 0;
+            ties = 0;
+
+            // Clear LocalStorage
+            localStorage.removeItem('wins');
+            localStorage.removeItem('losses');
+            localStorage.removeItem('ties');
+
+            // Update UI
+            document.getElementById('wins').innerText = wins;
+            document.getElementById('losses').innerText = losses;
+            document.getElementById('ties').innerText = ties;
+            document.getElementById('result').innerText = '';
+        }
+    </script>
+
+</body>
+</html>
