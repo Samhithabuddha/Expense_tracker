@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .container {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: calc(100% - 20px);
+    }
+    .transaction-list {
+      list-style: none;
+      padding: 0;
+    }
+    .transaction {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+    }
+    .transaction.expense {
+      color: red;
+    }
+    .transaction.income {
+      color: green;
+    }
+    .delete-btn {
+      color: red;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Expense Tracker</h1>
+    </div>
+    <h3>Your Balance: <span id="balance">$0.00</span></h3>
+    <div>
+      <h3>History</h3>
+      <ul id="transaction-list" class="transaction-list"></ul>
+    </div>
+    <div>
+      <h3>Add New Transaction</h3>
+      <input type="text" id="description" placeholder="Enter description" />
+      <input type="number" id="amount" placeholder="Enter amount (+income, -expense)" />
+      <button id="add-btn">Add Transaction</button>
+    </div>
+  </div>
+  <script src="expense.js"></script>
+</body>
+</html>
