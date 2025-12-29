@@ -15,6 +15,5 @@ HTML
 CSS
 JavaScript
 
-Tools
-Git & GitHub
+
 
