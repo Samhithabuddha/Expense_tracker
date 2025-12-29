@@ -14,9 +14,10 @@ Responsive and user-friendly UI
 
 🛠️ Tech Stack
 
-Frontend
 HTML
+
 CSS
+
 JavaScript
 
 
