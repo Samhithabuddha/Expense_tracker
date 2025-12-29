@@ -27,13 +27,14 @@ The Expense Tracker Web Application is a simple frontend project that helps user
 ## 🏗️ **PROJECT ARCHITECTURE**
 The Expense Tracker follows a client-side architecture where all functionality is handled within the browser without using any backend server.
 
-USER INTERFACE (HTML + CSS)
-->
+```USER INTERFACE (HTML + CSS)
+↓
 JAVASCRIPT LOGIC
 (EXPENSE MANAGEMENT & CALCULATIONS)
-->
+↓
 BROWSER LOCAL STORAGE
 (DATA PERSISTENCE)
+```
 
 
 ---
